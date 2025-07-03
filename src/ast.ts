@@ -3,7 +3,7 @@ type Ast = {
   nodes: AstNodes;
 };
 
-type AstNodes = AstNodeLike[];
+type AstNodes = AstNode[];
 
 /**
  * When the first template variable is {0} (index-based), every following
@@ -12,19 +12,19 @@ type AstNodes = AstNodeLike[];
  */
 type AstMode = "index" | "property";
 
-type AstNodeLike = {
+type AstNode = {
   kind: AstKind;
 };
 
-type AstTemplatePropertyNode = AstNodeLike & {
+type AstTemplatePropertyNode = AstNode & {
   property: string;
 };
 
-type AstTemplateIndexNode = AstNodeLike & {
+type AstTemplateIndexNode = AstNode & {
   index: number;
 };
 
-type AstTextNode = AstNodeLike & {
+type AstTextNode = AstNode & {
   value: string;
 };
 
@@ -58,6 +58,7 @@ function createAstTextNode (value: string): AstTextNode {
 export type {
   Ast,
   AstNodes,
+  AstNode,
   AstMode,
   AstTemplatePropertyNode,
   AstTemplateIndexNode,

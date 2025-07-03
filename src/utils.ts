@@ -9,15 +9,20 @@ function getCharDescriptor (char: string): CharDescriptor | null {
     const templateChar: CharDescriptor | undefined = TEMPLATE_CHARS[ templateCharKey ];
 
     /* eslint-disable-next-line @tseslint/dot-notation */
-    if (templateChar?.char === char)
+    if (templateChar?.char !== char)
       return;
 
-    charDescriptor = templateChar ?? null;
+    charDescriptor = templateChar;
   });
 
   return charDescriptor;
 }
 
+function isObject (value: unknown): boolean {
+  return typeof value === "object" && !Array.isArray(value) && value !== null;
+}
+
 export {
-  getCharDescriptor
+  getCharDescriptor,
+  isObject
 };

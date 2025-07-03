@@ -2,7 +2,7 @@ import { CharDescriptor, CharKind } from "./chars";
 import { Ast, AstMode, AstNodes, createAstTemplateIndexNode, createAstTemplatePropertyNode, createAstTextNode } from "./ast";
 import { getCharDescriptor } from "./utils";
 
-function parse (value: string): Ast {
+function parseAst (value: string): Ast {
   /* eslint-disable-next-line @unicorn/prefer-spread */
   const splittedValue: string[] = value.split("");
 
@@ -22,6 +22,14 @@ function parse (value: string): Ast {
     if (charDescriptor === null) {
       sequence === null ? sequence = char : sequence += char;
 
+      if (index === splittedValue.length - 1) {
+        astNodes.push(
+          createAstTextNode(sequence)
+        );
+        sequence = null;
+      }
+
+
       return;
     }
 
@@ -29,7 +37,7 @@ function parse (value: string): Ast {
     switch (charDescriptor.kind) {
       case CharKind.START: {
         // When no char kind ended before start char kind then its a syntax error
-        if (lastCharKind !== CharKind.END)
+        if (lastCharKind !== null && lastCharKind !== CharKind.END)
           throw new Error(`Expected an end char kind, but got a start char kind at index ${ index } instead`);
 
         if (sequence !== null) {
@@ -56,7 +64,7 @@ function parse (value: string): Ast {
 
         // If current template variable is based differently than detected ast mode its a syntax error
         if (detectedAstMode !== null && detectedAstMode !== nodeAstMode)
-          throw new Error(`Expected to have only ${ detectedAstMode }-based template variables, but got a { currentAstMode }-based instead`);
+          throw new Error(`Expected to have only ${ detectedAstMode }-based template variables, but got a ${ nodeAstMode }-based instead`);
 
         detectedAstMode ??= nodeAstMode;
         astNodes.push(
@@ -84,4 +92,4 @@ function parse (value: string): Ast {
   };
 }
 
-export default parse;
+export default parseAst;
