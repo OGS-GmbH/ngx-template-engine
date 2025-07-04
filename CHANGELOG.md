@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/OGS-GmbH/ngx-template-engine/compare/v1.2.0...v1.2.1) (2025-07-04)
+
+
+### Bug Fixes
+
+* **pipe:** default parser import ([f02c1fa](https://github.com/OGS-GmbH/ngx-template-engine/commit/f02c1faa0782a0c407b5bc1bb54025a1681e497e))
+
 ## [1.2.0](https://github.com/OGS-GmbH/ngx-template-engine/compare/v1.1.0...v1.2.0) (2025-07-04)
 
 
