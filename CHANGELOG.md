@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/OGS-GmbH/ngx-template-engine/compare/v1.1.0...v1.2.0) (2025-07-04)
+
+
+### Features
+
+* added ast and parser export ([#5](https://github.com/OGS-GmbH/ngx-template-engine/issues/5)) ([d271c0d](https://github.com/OGS-GmbH/ngx-template-engine/commit/d271c0d354c46b7c0d595928649ae8a1fc763fc2))
+
 ## [1.1.0](https://github.com/OGS-GmbH/ngx-template-engine/compare/v1.0.0...v1.1.0) (2025-07-04)
 
 
