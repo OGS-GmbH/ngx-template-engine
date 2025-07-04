@@ -3,7 +3,7 @@
 import { inject, Pipe, PipeTransform } from "@angular/core";
 import { DataArray, DataRecord, transformAst } from "../transformer";
 import { Ast } from "../ast";
-import parseAst from "../parser";
+import { parseAst } from "../parser";
 import { TEMPLATE_ENGINE_CONFIG_TOKEN, TemplateEngineConfig } from "../token";
 
 @Pipe({
