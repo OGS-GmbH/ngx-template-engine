@@ -92,4 +92,6 @@ function parseAst (value: string): Ast {
   };
 }
 
-export default parseAst;
+export {
+  parseAst
+};
