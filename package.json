@@ -1,6 +1,6 @@
 {
 	"name": "@ogs-gmbh/ngx-template-engine",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "A library providing a flexible and efficient template engine for dynamic content rendering. It enables easy integration of customizable templates within Angular applications.",
 	"keywords": [
 		"angular",
