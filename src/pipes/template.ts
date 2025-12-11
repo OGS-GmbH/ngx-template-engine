@@ -6,6 +6,15 @@ import { Ast } from "../ast";
 import { parseAst } from "../parser";
 import { TEMPLATE_ENGINE_CONFIG_TOKEN, TemplateEngineConfig } from "../token";
 
+/**
+ * Angular pipe that transforms template strings by replacing placeholders with provided data.
+ * @category Pipes
+ * @remarks
+ * Supports optional fallback behavior: if an error occurs during transformation, the last successful value can be returned.
+ *
+ * @since 1.1.0
+ * @author Simon Kovtyk
+ */
 @Pipe({
   name: "template"
 })
@@ -27,6 +36,14 @@ export class TemplatePipe implements PipeTransform {
     this._boostrapValue = value;
   }
 
+  /**
+   * Transforms a template string using the given data.
+   * @param value - The template string to transform.
+   * @param data - Object or array of values to replace placeholders.
+   * @param fallbackOnError - Optional flag to return the last successful result on error.
+   *
+   * @throws If transformation fails and no fallback value is available.
+   */
   public transform(value: string, data: DataRecord | DataArray, fallbackOnError?: boolean): string {
     const shouldFallbackOnError: boolean | undefined = fallbackOnError ?? this._config?.fallbackOnError;
 

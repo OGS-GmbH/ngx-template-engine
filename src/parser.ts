@@ -2,6 +2,17 @@ import { CharDescriptor, CharKind } from "./chars";
 import { Ast, AstMode, AstNodes, createAstTemplateIndexNode, createAstTemplatePropertyNode, createAstTextNode } from "./ast";
 import { getCharDescriptor } from "./utils";
 
+/**
+ * Parses a string and returns its Abstract Syntax Tree (AST) representation.
+ * @category Utilities
+ *
+ * @param value - The string input to parse.
+ * @returns The parsed AST.
+ * @throws If the input string cannot be parsed into a valid AST.
+ *
+ * @since 1.0.0
+ * @author Simon Kovtyk
+ */
 function parseAst (value: string): Ast {
   /* eslint-disable-next-line @unicorn/prefer-spread */
   const splittedValue: string[] = value.split("");
