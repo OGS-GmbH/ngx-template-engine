@@ -2,8 +2,7 @@ import {
   ESLINT_JSON_RULES,
   ESLINT_MARKDOWN_RULES,
   JS_RULES_PRESET,
-  ANGULAR_TEMPLATE_RULES_PRESET,
-  getAngularTsPreset
+  ANGULAR_TEMPLATE_RULES_PRESET
 } from "@ogs-gmbh/linter";
 import eslintJson from "@eslint/json";
 import eslintMarkdown from "@eslint/markdown";
@@ -38,7 +37,8 @@ export default tseslint.config(
       "node_modules",
       "dist",
       "CHANGELOG.md",
-      "README.md"
+      "README.md",
+      ".vitepress/.vitepress/cache"
     ]
   },
   {
@@ -46,7 +46,7 @@ export default tseslint.config(
     rules: ANGULAR_TEMPLATE_RULES_PRESET,
     languageOptions: {
       globals: { ...globals.browser },
-      parser: angular.templa
+      parser: angular.templateParser
     }
   },
   {
@@ -55,13 +55,15 @@ export default tseslint.config(
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        projectService: true,
+        projectService: {
+          allowDefaultProject: [
+            ".vitepress/.vitepress/*",
+            ".vitepress/.vitepress/theme/*"
+          ]
+        },
         tsconfigRootDir: import.meta.dirname
       }
-    },
-    rules: getAngularTsPreset({
-      selectorPrefix: "ogs-http"
-    })
+    }
   },
   {
     files: [ "**/*.js", "**/*.mjs", "**/*.cjs" ],
@@ -69,6 +71,10 @@ export default tseslint.config(
   },
   {
     files: [ "**/*.md" ],
+    language: "@markdown/commonmark",
+    languageOptions: {
+      frontmatter: "yaml"
+    },
     rules: ESLINT_MARKDOWN_RULES
   },
   {
