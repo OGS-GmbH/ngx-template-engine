@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import { inject, Pipe, PipeTransform } from "@angular/core";
 import { DataArray, DataRecord, transformAst } from "../transformer";
 import { Ast } from "../ast";
@@ -8,10 +6,12 @@ import { TEMPLATE_ENGINE_CONFIG_TOKEN, TemplateEngineConfig } from "../token";
 
 /**
  * Angular pipe that transforms template strings by replacing placeholders with provided data.
- * @category Pipes
+ * @category Template Engine
  * @remarks
- * Supports optional fallback behavior: if an error occurs during transformation, the last successful value can be returned.
- *
+ * This pipe parses the template into an {@link Ast} and evaluates it using {@link transformAst},
+ * supports optional fallback behavior: If an error occurs during transformation and fallback is enabled, the pipe
+ * returns the last successfully transformed value instead of throwing an error.
+ * Fallback behavior may be enabled explicitly via the "fallbackOnError" parameter or globally through {@link TemplateEngineConfig}.
  * @since 1.1.0
  * @author Simon Kovtyk
  */
@@ -37,11 +37,12 @@ export class TemplatePipe implements PipeTransform {
   }
 
   /**
-   * Transforms a template string using the given data.
+   * Transforms a template string using the provided data.
    * @param value - The template string to transform.
    * @param data - Object or array of values to replace placeholders.
    * @param fallbackOnError - Optional flag to return the last successful result on error.
    *
+   * @returns The transformed template string.
    * @throws If transformation fails and no fallback value is available.
    */
   public transform(value: string, data: DataRecord | DataArray, fallbackOnError?: boolean): string {

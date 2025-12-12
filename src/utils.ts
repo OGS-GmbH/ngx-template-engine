@@ -8,7 +8,6 @@ function getCharDescriptor (char: string): CharDescriptor | null {
   templateCharKeys.forEach((templateCharKey: string): void => {
     const templateChar: CharDescriptor | undefined = TEMPLATE_CHARS[ templateCharKey ];
 
-    /* eslint-disable-next-line @tseslint/dot-notation */
     if (templateChar?.char !== char)
       return;
 

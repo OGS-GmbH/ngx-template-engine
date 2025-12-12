@@ -20,12 +20,12 @@ type DataRecord = Record<string, string | number>;
 type DataArray = Array<string | number>;
 
 /**
- * Transforms an AST by replacing placeholders with values from the provided data.
+ * Evaluates an {@link Ast} using the provided data and returns the transformed string.
  * @category Template Engine
  *
- * @param ast - The abstract syntax tree representing the parsed template.
+ * @param ast - The AST produced by {@link parseAst}.
  * @param data - The data record or array used to replace template placeholders.
- * @returns The fully transformed string.
+ * @returns The transformed string.
  *
  * @since 1.0.0
  * @author Simon Kovtyk
@@ -34,7 +34,6 @@ function transformAst (ast: Ast, data: DataRecord | DataArray): string {
   if (Array.isArray(data) && ast.mode !== "index" || isObject(data) && ast.mode !== "property")
     throw new Error(`Expected an appropiate data type matching to ${ ast.mode }-based template variables`);
 
-  /* eslint-disable-next-line array-callback-return */
   return ast.nodes.map((node: AstNode): string => {
     if (node.kind === AstKind.TEXT)
       return (node as AstTextNode).value;

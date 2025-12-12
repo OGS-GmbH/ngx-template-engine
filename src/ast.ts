@@ -1,6 +1,6 @@
 /**
  * Represents an Abstract Syntax Tree (AST) for the template engine.
- * @category Types
+ * @category AST
  *
  * @since 1.0.0
  * @author Simon Kovtyk
@@ -11,8 +11,8 @@ type Ast = {
 };
 
 /**
- * An array of AST nodes. Represents the children or elements of an {@link Ast}.
- * @category Types
+ * A list of {@link AstNode} elements. Typically used to represent the children of an {@link Ast}.
+ * @category AST
  *
  * @since 1.0.0
  * @author Simon Kovtyk
@@ -23,7 +23,7 @@ type AstNodes = AstNode[];
  * Specifies the mode of an AST. When the first template variable is {0} (index-based), every following
  * template variable must be index-based. Same applies to {property} (property-based).
  * This result in only having one mode for the ast to work with.
- * @category Types
+ * @category AST
  *
  * @since 1.0.0
  * @author Simon Kovtyk
@@ -32,7 +32,7 @@ type AstMode = "index" | "property";
 
 /**
  * Represents a single node in an Abstract Syntax Tree (AST).
- * @category Types
+ * @category AST
  *
  * @since 1.0.0
  * @author Simon Kovtyk
@@ -43,8 +43,8 @@ type AstNode = {
 
 /**
  * Represents an AST node that refers to a template property.
- * Extends {@link AstNode} by adding a `property` field for property-based access.
- * @category Types
+ * Extends {@link AstNode} by adding a "property" field for property-based access.
+ * @category AST
  *
  * @since 1.0.0
  * @author Simon Kovtyk
@@ -54,8 +54,8 @@ type AstTemplatePropertyNode = AstNode & {
 };
 
 /**
- * Represents an AST node that refers to a template index. Extends {@link AstNode} by adding an `index` field for index-based access.
- * @category Types
+ * Represents an AST node that refers to a template index. Extends {@link AstNode} by adding an "index" field for index-based access.
+ * @category AST
  *
  * @since 1.0.0
  * @author Simon Kovtyk
@@ -65,8 +65,8 @@ type AstTemplateIndexNode = AstNode & {
 };
 
 /**
- * Represents an AST node that contains plain text. Extends {@link AstNode} by adding a `value` field for the text content.
- * @category Types
+ * Represents an AST node that contains plain text. Extends {@link AstNode} by adding a "value" field for the text content.
+ * @category AST
  *
  * @since 1.0.0
  * @author Simon Kovtyk
@@ -76,7 +76,8 @@ type AstTextNode = AstNode & {
 };
 
 /**
- * Represents the different kinds of AST nodes.
+ * Enumerates the kinds of AST nodes used by the template engine.
+ * @category AST
  *
  * @since 1.0.0
  * @author Simon Kovtyk
@@ -88,12 +89,11 @@ enum AstKind {
 }
 
 /**
- * Creates an AST node representing a template property.
- * This is a helper function that constructs an {@link AstTemplatePropertyNode} with the appropriate {@link AstKind.TEMPLATE_PROPERTY} kind.
- * @category Utilities
+ * Creates an AST node representing a property access expression.
+ * @category AST
  *
- * @param property - The name of the template property this node should represent.
- * @returns A new {@link AstTemplatePropertyNode} instance.
+ * @param property - The name of the template property to access.
+ * @returns A new {@link AstTemplatePropertyNode} with the given property name.
  *
  * @since 1.0.0
  * @author Simon Kovtyk
@@ -106,12 +106,11 @@ function createAstTemplatePropertyNode (property: string): AstTemplatePropertyNo
 }
 
 /**
- * Creates an AST node representing a template index access.
- * This helper constructs an {@link AstTemplateIndexNode} with the appropriate {@link AstKind.TEMPLATE_INDEX} kind.
- * @category Utilities
+ * Creates an AST node representing an indexed access expression.
+ * @category AST
  *
- * @param index - The numeric index this node should represent.
- * @returns A new {@link AstTemplateIndexNode} instance.
+ * @param index - The numeric index to access.
+ * @returns A new {@link AstTemplateIndexNode} with the given index.
  *
  * @since 1.0.0
  * @author Simon Kovtyk
@@ -124,9 +123,8 @@ function createAstTemplateIndexNode (index: number): AstTemplateIndexNode {
 }
 
 /**
- * Creates an AST node representing plain text content.
- * This helper constructs an {@link AstTextNode} with the appropriate {@link AstKind.TEXT} kind.
- * @category Utilities
+ * Creates an AST node representing a plain text segment in the template.
+ * @category AST
  *
  * @param value - The text content to store in the node.
  * @returns A new {@link AstTextNode} instance.

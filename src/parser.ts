@@ -3,8 +3,8 @@ import { Ast, AstMode, AstNodes, createAstTemplateIndexNode, createAstTemplatePr
 import { getCharDescriptor } from "./utils";
 
 /**
- * Parses a string and returns its Abstract Syntax Tree (AST) representation.
- * @category Utilities
+ * Parses a string and returns its AST representation.
+ * @category AST
  *
  * @param value - The string input to parse.
  * @returns The parsed AST.
@@ -14,7 +14,6 @@ import { getCharDescriptor } from "./utils";
  * @author Simon Kovtyk
  */
 function parseAst (value: string): Ast {
-  /* eslint-disable-next-line @unicorn/prefer-spread */
   const splittedValue: string[] = value.split("");
 
   if (splittedValue.length === 0)
@@ -93,7 +92,6 @@ function parseAst (value: string): Ast {
   });
 
   // When ast mode could not be detected, then why is someone using this on a value only char sequence?
-  /* eslint-disable-next-line @tseslint/no-unnecessary-condition */
   if (detectedAstMode === null)
     throw new Error(`Expected template to have at least 1 index- or property-based variable`);
 
