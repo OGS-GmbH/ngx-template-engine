@@ -25,7 +25,8 @@ export default defineConfig({
       {
         text: "Guide",
         items: [
-          { text: "Getting started", link: "/guide/" }
+          { text: "Getting started", link: "/guide/" },
+          { text: "Template Engine", link: "/guide/template-engine" }
         ]
       },
       {
