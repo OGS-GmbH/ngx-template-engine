@@ -2,7 +2,13 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { TemplatePipe } from "./pipes/template";
 
-/* eslint-disable @tseslint/no-extraneous-class */
+/**
+ * TemplatePipeModule exports TemplatePipe. For more information, see [TemplatePipe](https://ogs-gmbh.github.io/ngx-template-engine/reference/classes/TemplatePipe).
+ * @category Template Engine
+ *
+ * @since 1.1.0
+ * @author Simon Kovtyk
+ */
 @NgModule({
   imports: [
     CommonModule
@@ -15,4 +21,3 @@ import { TemplatePipe } from "./pipes/template";
   ]
 })
 export class TemplatePipeModule {}
-/* eslint-enable @tseslint/no-extraneous-class */
