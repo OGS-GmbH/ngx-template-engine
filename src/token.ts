@@ -2,7 +2,7 @@ import { InjectionToken, ValueProvider } from "@angular/core";
 
 /**
  * Configuration options for the template engine.
- * @category Template Engine
+ * @category NG interop
  * @property fallbackOnError - Optional flag to return the last successful result when a transformation fails.
  *
  * @since 1.1.0
@@ -13,7 +13,7 @@ export type TemplateEngineConfig = {
 };
 /**
  * Injection token for providing template engine configuration.
- * @category Template Engine
+ * @category NG interop
  * @readonly
  *
  * @since 1.1.0
@@ -22,7 +22,7 @@ export type TemplateEngineConfig = {
 export const TEMPLATE_ENGINE_CONFIG_TOKEN: InjectionToken<TemplateEngineConfig> = new InjectionToken<TemplateEngineConfig>("template-engine-config");
 /**
  * Creates a value provider for supplying a {@link TemplateEngineConfig} to the dependency injection system.
- * @category Template Engine
+ * @category NG interop
  *
  * @param config - The template engine configuration to provide.
  * @returns A {@link ValueProvider} that binds the configuration to {@link TEMPLATE_ENGINE_CONFIG_TOKEN}.

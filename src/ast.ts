@@ -6,7 +6,19 @@
  * @author Simon Kovtyk
  */
 type Ast = {
+  /**
+   * The mode of the AST, indicating whether it uses index-based or property-based template variables.
+   *
+   * @since 1.0.0
+   * @author Simon Kovtyk
+   */
   mode: AstMode;
+  /**
+   * The list of nodes that make up the AST.
+   *
+   * @since 1.0.0
+   * @author Simon Kovtyk
+   */
   nodes: AstNodes;
 };
 

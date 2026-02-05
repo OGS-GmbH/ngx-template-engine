@@ -14,7 +14,7 @@ import { getCharDescriptor } from "./utils";
  * @author Simon Kovtyk
  */
 function parseAst (value: string): Ast {
-  const splittedValue: string[] = value.split("");
+  const splittedValue: string[] = [...value];
 
   if (splittedValue.length === 0)
     throw new Error("Error processing a zero length data sequence");
@@ -38,7 +38,6 @@ function parseAst (value: string): Ast {
         );
         sequence = null;
       }
-
 
       return;
     }
@@ -92,6 +91,7 @@ function parseAst (value: string): Ast {
   });
 
   // When ast mode could not be detected, then why is someone using this on a value only char sequence?
+  /* eslint-disable-next-line @tseslint/no-unnecessary-condition */
   if (detectedAstMode === null)
     throw new Error(`Expected template to have at least 1 index- or property-based variable`);
 
