@@ -32,7 +32,7 @@
   "scripts": {
     "ci:build:main:production": "ng build",
     "ci:docs:extract:typedoc": "typedoc",
-    "ci:docs:main:vitepress": "vitepress build .vitepress",
+    "ci:docs:main:vitepress": "bash ./.vitepress/scripts/pre-vitepress.sh && vitepress build .vitepress",
     "ci:pr:commitlint:main:commitlint": "commitlint",
     "ci:pr:lint:main:eslint": "eslint .",
     "commit": "commit",
