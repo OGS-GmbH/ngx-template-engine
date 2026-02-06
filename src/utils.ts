@@ -1,14 +1,14 @@
 import { CharDescriptor, TEMPLATE_CHARS } from "./chars";
 
 /**
-  * Retrieves the character descriptor for a given template manipulation character
-  * @category AST
-  * @param char - The character to retrieve the descriptor for.
-  * @returns The corresponding {@link CharDescriptor} if found, otherwise null.
-  *
-  * @since 1.0.0
-  * @author Simon Kovtyk
-  */
+ * Retrieves the character descriptor for a given template manipulation character
+ * @category AST
+ * @param char - The character to retrieve the descriptor for.
+ * @returns The corresponding {@link CharDescriptor} if found, otherwise null.
+ *
+ * @since 1.0.0
+ * @author Simon Kovtyk
+ */
 function getCharDescriptor (char: string): CharDescriptor | null {
   const templateCharKeys: string[] = Object.keys(TEMPLATE_CHARS);
 

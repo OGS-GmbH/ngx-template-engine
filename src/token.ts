@@ -25,7 +25,7 @@ export const TEMPLATE_ENGINE_CONFIG_TOKEN: InjectionToken<TemplateEngineConfig> 
  * @category NG interop
  *
  * @param config - The template engine configuration to provide.
- * @returns A {@link ValueProvider} that binds the configuration to {@link TEMPLATE_ENGINE_CONFIG_TOKEN}.
+ * @returns A `ValueProvider` that binds the configuration to {@link TEMPLATE_ENGINE_CONFIG_TOKEN}.
  *
  * @since 1.1.0
  * @author Simon Kovtyk
