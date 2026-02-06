@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/OGS-GmbH/ngx-template-engine/compare/v1.2.1...v2.0.0) (2026-02-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to angular 21 ([#10](https://github.com/OGS-GmbH/ngx-template-engine/issues/10))
+
+### Miscellaneous Chores
+
+* upgrade to angular 21 ([#10](https://github.com/OGS-GmbH/ngx-template-engine/issues/10)) ([a4d0da9](https://github.com/OGS-GmbH/ngx-template-engine/commit/a4d0da9ecda66ada9b17370050f05715c6b69296))
+
 ## [1.2.1](https://github.com/OGS-GmbH/ngx-template-engine/compare/v1.2.0...v1.2.1) (2025-07-04)
 
 
