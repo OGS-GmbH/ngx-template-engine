@@ -5,7 +5,7 @@ next: false
 
 # Angular Pipe
 
-The template engine replaces placeholders inside template strings using data from objects or arrays. It powers the TemplatePipe and can also be used programmatically.
+The Template Engine replaces placeholders inside template strings using data from `Object` or `Array`. It powers the [`TemplatePipe`](/reference/NG_interop/TemplatePipe) and can also be used programmatically.
 
 ## Configure
 
@@ -28,15 +28,15 @@ export class AppComponent {}
 
 We provide a global configuration with some additional behaviors.
 
-Refer to the [config]() type for getting a deeper understanding.
+Refer to the [config](/reference/NG_interop/TemplateEngineConfig) type for getting a deeper understanding.
 
 :::
 
 ## Usage
 
-Each piped value requires either a [`DataArray`]() or [`DataObject`]() for getting the template engine to work.
+Each piped value requires either a [`DataArray`](/reference/AST/DataArray) or [`DataRecord`](/reference/AST/DataRecord) for getting the template engine to work.
 
-As an example, we define an [`DataObject`]() inside our `app.component.ts`:
+As an example, we define an `DataRecord` inside our `app.component.ts`:
 
 ```ts [app.component.ts]
 import { Component } from "@angular/common";
@@ -55,21 +55,10 @@ export class AppComponent {
 }
 ```
 
-Now, you can use the [`DataObject`]() inside your pipe:
+Now, you can use the `DataRecord` inside your pipe:
 
 ```html [app.component.html]
 <p>{{ "Hello {name}" | template : user }}</p>
 ```
 
 The Paragraph-Element should now contain `Hello World` as TextNode.
-
-
-## 3. Programmatic usage
-```typescript [example.ts]
-import { parseAst, transformAst } from "@ogs-gmbh/ngx-template-engine";
-
-const ast = parseAst("User: {{user.name}}");
-const result = transformAst(ast, { user: { name: "Bob" } });
-// "User: Bob"
-```
-Templates are parsed into an AST (parseAst) and then evaluated with data (transformAst) to produce the final string.

@@ -44,7 +44,9 @@ export default defineConfig({
       {
         text: "Guide",
         items: [
-          { text: "Getting started", link: "/guide/" }
+          { text: "Getting started", link: "/guide/" },
+          { text: "AST-based transformation", link: "/guide/ast-based-transformation" },
+          { text: "Angular Pipe", link: "/guide/angular-pipe" }
         ]
       },
       sidebarPlugin({
