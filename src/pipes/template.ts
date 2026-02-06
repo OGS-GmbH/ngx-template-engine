@@ -6,12 +6,13 @@ import { TEMPLATE_ENGINE_CONFIG_TOKEN, TemplateEngineConfig } from "../token";
 
 /**
  * Angular pipe that transforms template strings by replacing placeholders with provided data.
- * @category Template Engine
+ * @category NG interop
  * @remarks
  * This pipe parses the template into an {@link Ast} and evaluates it using {@link transformAst},
  * supports optional fallback behavior: If an error occurs during transformation and fallback is enabled, the pipe
  * returns the last successfully transformed value instead of throwing an error.
  * Fallback behavior may be enabled explicitly via the "fallbackOnError" parameter or globally through {@link TemplateEngineConfig}.
+ *
  * @since 1.1.0
  * @author Simon Kovtyk
  */
@@ -22,7 +23,8 @@ export class TemplatePipe implements PipeTransform {
   private readonly _config: TemplateEngineConfig | null = inject(TEMPLATE_ENGINE_CONFIG_TOKEN, { optional: true });
 
   private _boostrapValue: string | null = null;
-  
+ 
+  /* eslint-disable-next-line @tseslint/class-methods-use-this */
   private _parseAndTransform (value: string, data: DataRecord | DataArray): string {
     const ast: Ast = parseAst(value);
 
@@ -44,12 +46,15 @@ export class TemplatePipe implements PipeTransform {
    *
    * @returns The transformed template string.
    * @throws If transformation fails and no fallback value is available.
+   *
+   * @since 1.0.0
+   * @author Simon Kovtyk
    */
   public transform(value: string, data: DataRecord | DataArray, fallbackOnError?: boolean): string {
     const shouldFallbackOnError: boolean | undefined = fallbackOnError ?? this._config?.fallbackOnError;
 
     if (!shouldFallbackOnError) {
-      const transformedValue = this._parseAndTransform(value, data);
+      const transformedValue: string = this._parseAndTransform(value, data);
 
       this._updateBoostrapValue(transformedValue);
 
@@ -57,7 +62,7 @@ export class TemplatePipe implements PipeTransform {
     }
 
     try {
-      const transformedValue = this._parseAndTransform(value, data);
+      const transformedValue: string = this._parseAndTransform(value, data);
 
       this._updateBoostrapValue(transformedValue);
 
